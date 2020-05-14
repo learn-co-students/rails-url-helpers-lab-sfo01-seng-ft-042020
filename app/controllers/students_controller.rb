@@ -5,7 +5,10 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  def show
+  def activate
+    set_student
+    @student.update(active: !@student.active)
+    redirect_to "/students/#{@student.id}"
   end
 
   private
